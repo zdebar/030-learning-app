@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useToastStore } from "@/features/toast/use-toast-store";
+import { useToastStore } from "@/features/toast/toast-store";
 import ButtonAsyncModal from "../../components/UI/buttons/ButtonAsyncModal";
 import { useAuthStore } from "@/features/auth/auth-store";
 

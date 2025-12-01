@@ -1,3 +1,28 @@
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/features/auth/auth-store";
+import Button from "@/components/UI/buttons/Button";
+import PropertyView from "@/components/UI/PropertyView";
+
 export default function Home() {
-  return null;
+  const navigate = useNavigate();
+  const { userId, userEmail } = useAuthStore();
+
+  return (
+    <>
+      <PropertyView label="Uživatel:" className="h-input" value={userEmail} />
+      {!userId ? (
+        <Button onClick={() => navigate("/login")} className="w-full grow-0">
+          Sign in / Sign up
+        </Button>
+      ) : (
+        <div>
+          <PropertyView
+            label="Uživatel:"
+            className="h-input"
+            value={userEmail}
+          />
+        </div>
+      )}
+    </>
+  );
 }

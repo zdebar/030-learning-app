@@ -1,4 +1,4 @@
-import Icon, { type IconProps } from "./Icon";
+import Icon, { type IconProps } from "@/components/UI/icons/Icon";
 
 export default function MathIcon(props: IconProps) {
   return (
