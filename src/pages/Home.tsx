@@ -9,7 +9,6 @@ export default function Home() {
 
   return (
     <>
-      <PropertyView label="Uživatel:" className="h-input" value={userEmail} />
       {!userId ? (
         <Button onClick={() => navigate("/login")} className="w-full grow-0">
           Sign in / Sign up

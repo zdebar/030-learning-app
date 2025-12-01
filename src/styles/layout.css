@@ -1,5 +1,5 @@
 @theme {
   /** Layout Dimensions **/
-  --max-width-page: 1200px;
-  --max-width-container: 900px;
+  --max-width-page: 900px;
+  --max-width-container: 700px;
 }
