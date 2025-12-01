@@ -1,4 +1,4 @@
-import { useThemeStore, type UserTheme } from "./theme-store";
+import { useThemeStore, type UserTheme } from "./use-theme-store";
 import { useEffect } from "react";
 
 export default function ThemeProvider({

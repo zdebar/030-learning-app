@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hcaptcha/react-hcaptcha": "^1.16.0",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.86.0",
     "@tailwindcss/vite": "^4.1.17",
     "react": "^19.2.0",

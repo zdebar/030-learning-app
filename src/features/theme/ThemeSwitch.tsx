@@ -2,7 +2,7 @@
 
 import SunIcon from "@/features/theme/SunIcon";
 import MoonIcon from "@/features/theme/MoonIcon";
-import { useThemeStore, type UserTheme } from "./theme-store";
+import { useThemeStore, type UserTheme } from "./use-theme-store";
 
 /**
  * ThemeSwitch Component
