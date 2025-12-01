@@ -1,0 +1,25 @@
+@theme {
+  /** Layout Dimensions **/
+  --max-width-container: 900px;
+
+  /** Button Sizes **/
+  --size-button: 3.25rem;
+  --width-button: 3.25rem;
+  --height-button: 3.25rem;
+  --height-input: 2.5rem;
+  --height-attribute: 1.5rem;
+}
+
+@layer components {
+  /** BUTTON STYLES **/
+  .shape-button-rectangular {
+    @apply h-button font-body font-bold tracking-wide;
+    flex-grow: 1;
+    flex-basis: auto;
+    flex-shrink: 0;
+  }
+
+  .shape-button-header {
+    @apply size-button rounded-full flex items-center justify-center;
+  }
+}

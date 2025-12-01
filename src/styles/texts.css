@@ -1,0 +1,18 @@
+@theme {
+  /** Font Families **/
+  --font-body: "Roboto", serif;
+  --font-headings: "Mansalva", sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: 15px;
+    @apply font-body;
+  }
+}
+
+@layer components {
+  .text-hint {
+    @apply font-headings text-center text-xl text-white;
+  }
+}

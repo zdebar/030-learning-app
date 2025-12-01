@@ -1,0 +1,38 @@
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  /** Basic Color Palette */
+  --color-dark: white;
+  --color-light: black;
+  --color-background-dark: #111827;
+  --color-background-light: #f7b740;
+
+  /** Button Colors **/
+  --color-button-normal: #f7b740;
+  --color-button-hover: white;
+
+  /** Overlay Color **/
+  --color-overlay: rgba(0, 0, 0, 0.2);
+}
+
+@layer base {
+  html {
+    @apply text-light dark:text-dark bg-background-light dark:bg-background-dark;
+  }
+}
+
+@layer components {
+  .color-button {
+    @apply border border-solid; /* Button Base */
+    @apply bg-background-light text-light dark:bg-background-dark dark:text-dark; /* Theming */
+    @apply hover:bg-button-hover hover:text-light cursor-pointer; /* Button Interactions */
+    @apply cursor-default; /* Disabled States */
+  }
+
+  .color-button-header {
+    @apply hover:bg-white hover:text-light; /* Button Interactions */
+  }
+
+  .color-button-header-disabled {
+    @apply cursor-default hover:bg-inherit text-gray-100 dark:text-gray-500; /** Disabled States **/
+  }
+}
