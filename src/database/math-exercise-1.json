@@ -1,10 +1,10 @@
 {
   "question": "Najdi x",
   "asignment": "5 = x",
-  "solution": [
+  "solutions": [
     [
       {
-        "step": "Prohodíme strany rovnice",
+        "operation": "Prohodíme strany rovnice",
         "explanation": "Oba dva zápisy rovnice jak '5 = x', tak 'x = 5' jsou správné. Běžně se používá zápis s neznámou na levé straně. Prohodíme tedy strany rovnice.",
         "steps": ["x = 5"],
         "points": -1

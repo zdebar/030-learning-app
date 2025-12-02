@@ -12,15 +12,23 @@ CREATE TABLE IF NOT EXISTS subjects (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Classes like Grade 1, Grade 2, etc.
-CREATE TABLE IF NOT EXISTS classes (
+-- School levels like Elementary, Middle School, High School
+CREATE TABLE IF NOT EXISTS school_levels (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     position INT NOT NULL, 
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
+-- Classes like Grade 1, Grade 2, etc.
+CREATE TABLE IF NOT EXISTS classes (
+    id SERIAL PRIMARY KEY,
+    school_levels_id INT,
+    name VARCHAR(100) NOT NULL,
+    position INT NOT NULL, 
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (school_levels_id) REFERENCES school_levels(id)
+);
 
 -- Courses like Algebra, Geometry, etc.
 CREATE TABLE IF NOT EXISTS courses ( 
@@ -40,10 +48,8 @@ CREATE TABLE IF NOT EXISTS chapters (
     name VARCHAR(100) NOT NULL,
     position INT NOT NULL,
     course_id INT,
-    explanation_id INT,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
-    FOREIGN KEY (course_id) REFERENCES courses(id),
-    FOREIGN KEY (explanation_id) REFERENCES explanations(id)
+    FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
 -- Exercises within chapters

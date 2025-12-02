@@ -10,10 +10,8 @@ export type ExerciseStep = {
 export type ExerciseSolution = ExerciseStep[];
 
 export type ExerciseContent = {
-  type: string;
   question: string;
-  exercise: string;
-  points: number;
+  asignment: string;
   solutions: ExerciseSolution[];
 };
 

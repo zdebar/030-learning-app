@@ -3,5 +3,6 @@
   "title": "Násobení na rovnicích",
   "content": {
     "html": "<p>Vynásobíme každý jednotlivý člen na obou stranách rovnic tímto číslem.</p>"
-  }
+  },
+  "examples": ["x + 1 = 2x + 7", "2x * 5 + 1 * 5 = 2x * 5 + 7 * 5"]
 }

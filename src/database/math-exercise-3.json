@@ -1,10 +1,10 @@
 {
   "question": "find x",
   "asignment": "x + 2 = 2x",
-  "solution": [
+  "solutions": [
     [
       {
-        "step": "-x",
+        "operation": "-x",
         "explanation": "No",
         "steps-hidden": ["x - x + 2 - 2 = 5 - 2"],
         "steps": ["x = 3"],

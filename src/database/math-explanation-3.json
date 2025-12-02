@@ -3,5 +3,6 @@
   "title": "Odečítání na rovnicích",
   "content": {
     "html": "<p>Odečteme stejné číslo od obou stran rovnice.</p>"
-  }
+  },
+  "examples": ["x = 7", "x - 3 = 7 - 3"]
 }

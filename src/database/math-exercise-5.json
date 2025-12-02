@@ -22,6 +22,7 @@
         "points": -1
       },
       {
+        "operation": "Prohodit strany rovnice",
         "steps": ["x = -4"],
         "points": -1
       }

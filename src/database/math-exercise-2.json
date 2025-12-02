@@ -1,10 +1,10 @@
 {
   "question": "Najdi x",
   "asignment": "x + 2 = 5",
-  "solution": [
+  "solutions": [
     [
       {
-        "step": "-2",
+        "operation": "-2",
         "explanation": "Abychom dostali prostá čísla pouze na jedné straně rovnice, odečteme 2 od obou stran.",
         "steps-hidden": ["x + 2 - 2 = 5 - 2"],
         "steps": ["x = 3"],
