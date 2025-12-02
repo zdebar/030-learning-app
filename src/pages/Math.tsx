@@ -1,7 +1,7 @@
 import { supabaseInstance } from "@/config/supabase.config";
 import { useFetch } from "../hooks/use-fetch";
 import { useAuthStore } from "@/features/auth/auth-store";
-import { type SchoolLevelOverviewType } from "@/database/overview.datatypes";
+import { type SchoolLevelOverviewType } from "@/components/Layout/overview/overview.datatypes";
 import SchoolLevelOverview from "@/components/Layout/overview/SchoolLevelOverview";
 export default function Math() {
   const { userId } = useAuthStore();
@@ -24,7 +24,7 @@ export default function Math() {
   if (loading || !overview) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       {overview.map((level: SchoolLevelOverviewType) => (
         <SchoolLevelOverview key={level.id} {...level} />
       ))}

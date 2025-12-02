@@ -1,19 +1,29 @@
 import type {
   SchoolLevelOverviewType,
   ClassOverviewType,
-} from "@/database/overview.datatypes";
+} from "@/components/Layout/overview/overview.datatypes";
 import ClassOverview from "./ClassOverview";
+import { useState } from "react";
 
 export default function SchoolLevelOverview({
-  level,
+  name,
   classes,
 }: SchoolLevelOverviewType) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section>
-      <h2>{level}</h2>
-      {classes.map((cls: ClassOverviewType) => (
-        <ClassOverview key={cls.id} {...cls} />
-      ))}
+      <button
+        className="h-button flex items-center pl-4 w-full border"
+        onClick={() => setExpanded(!expanded)}
+      >
+        <h1>{name}</h1>
+      </button>
+      {expanded &&
+        classes &&
+        classes.map((cls: ClassOverviewType) => (
+          <ClassOverview key={cls.id} {...cls} />
+        ))}
     </section>
   );
 }

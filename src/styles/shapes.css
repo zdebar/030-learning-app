@@ -23,4 +23,8 @@
   .shape-button-header {
     @apply size-button rounded-full flex items-center justify-center;
   }
+
+  .shape-bar {
+    @apply h-attribute;
+  }
 }

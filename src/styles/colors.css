@@ -7,7 +7,7 @@
   --color-background-light: #f7b740;
 
   /** Button Colors **/
-  --color-button-normal: #f7b740;
+  --color-button-normal: green;
   --color-button-hover: white;
 
   /** Overlay Color **/
@@ -21,9 +21,11 @@
 }
 
 @layer components {
+  /** Button Styles **/
+
   .color-button {
     @apply border border-solid; /* Button Base */
-    @apply bg-background-light text-light dark:bg-background-dark dark:text-dark; /* Theming */
+    @apply bg-inherit text-light dark:bg-background-dark dark:text-dark; /* Theming */
     @apply hover:bg-button-hover hover:text-light cursor-pointer; /* Button Interactions */
     @apply cursor-default; /* Disabled States */
   }
@@ -38,5 +40,11 @@
 
   .color-selected {
     @apply bg-white text-light;
+  }
+
+  /** Title Bars **/
+  .color-title-bar {
+    @apply bg-gray-200;
+    @apply border-b border-solid border-gray-300 dark:border-gray-600;
   }
 }

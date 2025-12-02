@@ -3,7 +3,7 @@ RETURNS JSON AS $$
 WITH chapters_data AS (
   SELECT
     ch.id,
-    ch.name AS chapter,
+    ch.name,
     ch.position,
     ch.points_required,
     uc.points_achieved,
@@ -16,14 +16,14 @@ WITH chapters_data AS (
 courses_data AS (
   SELECT
     co.id,
-    co.name AS course,
+    co.name,
     co.position,
     co.class_id,
     co.subject_id,
     json_agg(
       json_build_object(
         'id', ch.id,
-        'chapter', ch.chapter,
+        'name', ch.name,
         'pointsAchieved', ch.points_achieved,
         'pointsRequired', ch.points_required,
         'nextAt', ch.next_at,
@@ -38,13 +38,13 @@ courses_data AS (
 classes_data AS (
   SELECT
     cl.id,
-    cl.name AS class,
+    cl.name,
     cl.position,
     cl.school_level_id,
     json_agg(
       json_build_object(
         'id', co.id,
-        'course', co.course,
+        'name', co.name,
         'chapters', co.chapters
       ) ORDER BY co.position ASC
     ) FILTER (WHERE co.id IS NOT NULL) AS courses
@@ -56,11 +56,11 @@ school_levels_data AS (
   SELECT
     sl.id,
     sl.position,
-    sl.name AS level,
+    sl.name,
     json_agg(
       json_build_object(
         'id', cl.id,
-        'class', cl.class,
+        'name', cl.name,
         'courses', cl.courses
       ) ORDER BY cl.position ASC
     ) AS classes
@@ -71,7 +71,7 @@ school_levels_data AS (
 SELECT json_agg(
   json_build_object(
     'id', sl.id,
-    'level', sl.level,
+    'name', sl.name,
     'classes', sl.classes
   ) ORDER BY sl.position ASC
 )

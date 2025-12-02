@@ -4,3 +4,7 @@
 @import "./styles/texts.css";
 @import "./styles/layout.css";
 @import "tailwindcss";
+
+html {
+  overflow-y: scroll;
+}

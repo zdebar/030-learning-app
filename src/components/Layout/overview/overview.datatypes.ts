@@ -1,26 +1,26 @@
 export type SchoolLevelOverviewType = {
   id: number;
-  level: string;
+  name: string;
   classes: ClassOverviewType[];
 };
 
 export type ClassOverviewType = {
   id: number;
-  class: string;
+  name: string;
   courses: CourseOverviewType[];
 };
 
 export type CourseOverviewType = {
   id: number;
-  course: string;
+  name: string;
   chapters: ChapterOverviewType[];
 };
 
 export type ChapterOverviewType = {
   id: number;
-  chapter: string;
-  pointsAchieved: number;
-  pointsRequired: number;
+  name: string;
+  pointsAchieved: number[];
+  pointsRequired: number[];
   nextAt: string | null;
   finishedAt: string | null;
 };

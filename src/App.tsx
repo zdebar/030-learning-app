@@ -23,28 +23,26 @@ function App() {
   }, [initSession]);
 
   return (
-    <>
-      <div className="mx-auto min-h-screen max-w-page flex flex-col">
-        <Header />
-        <div className="max-w-container grow mx-auto w-full">
-          <Routes>
-            <Route path="/*" element={<Home />} />
-            <Route path="/math" element={<Math />} />
-            <Route element={<PublicLayout />}>
-              <Route path="/login" element={<Login />} />
-            </Route>
-            <Route element={<ProtectedLayout />}>
-              <Route path="/profile" element={<Profile />} />
-            </Route>
-            <Route
-              path="/*"
-              element={<div className="text-notice pt-8">Page not found</div>}
-            />
-          </Routes>
-        </div>
-        <Footer />
+    <div className="mx-auto min-h-screen max-w-page flex flex-col">
+      <Header />
+      <div className="max-w-container grow mx-auto w-full">
+        <Routes>
+          <Route path="/*" element={<Home />} />
+          <Route path="/math" element={<Math />} />
+          <Route element={<PublicLayout />}>
+            <Route path="/login" element={<Login />} />
+          </Route>
+          <Route element={<ProtectedLayout />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route
+            path="/*"
+            element={<div className="text-notice pt-8">Page not found</div>}
+          />
+        </Routes>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
