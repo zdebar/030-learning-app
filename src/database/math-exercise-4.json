@@ -1,0 +1,47 @@
+{
+  "question": " Najdi x",
+  "asignment": "x + 2 = 2x - 9",
+  "solutions": [
+    [
+      {
+        "operation": "- x",
+        "explanation": "Abychom dostali x pouze na jedné straně rovnice, odečteme x od obou stran.",
+        "steps-hidden": ["x - x + 2 = 2x - x - 9"],
+        "steps": ["2 = x - 9"],
+        "points": -1
+      },
+      {
+        "operation": "+ 9",
+        "explanation": "Abychom dostali prostá čísla pouze na pravé straně, odečteme -9 od obou stran.",
+        "steps-hidden": ["2 + 9 = x - 9 + 9", "11 = x"],
+        "steps": ["x = 11"],
+        "points": -1
+      }
+    ],
+    [
+      {
+        "operation": "+ 9",
+        "explanation": "Abychom dostali prostá čísla pouze na pravé straně, odečteme -9 od obou stran.",
+        "steps-hidden": ["x + 2 + 9 = 2x - 9 + 9"],
+        "steps": ["x + 11 = 2x"],
+        "points": -1
+      },
+      {
+        "operation": "- x",
+        "explanation": "Abychom dostali x pouze na jedné straně rovnice, odečteme x od obou stran.",
+        "steps-hidden": ["x + 11 - x = 2x - x", "11 = x"],
+        "steps": ["x = 11"],
+        "points": -1
+      }
+    ],
+    [
+      {
+        "operation": "- x, + 9",
+        "explanation": "Můžeme zároveň dělat více operací najednou.",
+        "steps-hidden": ["x - x + 2 + 9 = 2x - x - 9 + 9", "11 = x"],
+        "steps": ["x = 11"],
+        "points": -1
+      }
+    ]
+  ]
+}

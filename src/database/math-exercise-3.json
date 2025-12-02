@@ -1,0 +1,15 @@
+{
+  "question": "find x",
+  "asignment": "x + 2 = 2x",
+  "solution": [
+    [
+      {
+        "step": "-x",
+        "explanation": "No",
+        "steps-hidden": ["x - x + 2 - 2 = 5 - 2"],
+        "steps": ["x = 3"],
+        "points": -1
+      }
+    ]
+  ]
+}
