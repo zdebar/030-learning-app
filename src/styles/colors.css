@@ -35,4 +35,8 @@
   .color-button-header-disabled {
     @apply cursor-default hover:bg-inherit text-gray-100 dark:text-gray-500; /** Disabled States **/
   }
+
+  .color-selected {
+    @apply bg-white text-light;
+  }
 }

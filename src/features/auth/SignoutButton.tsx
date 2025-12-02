@@ -6,7 +6,7 @@ import { useAuthStore } from "@/features/auth/auth-store";
 /**
  * Button for signing out the user.
  */
-export default function SignoutButton() {
+export default function SignoutButton({ className }: { className?: string }) {
   const { handleLogout } = useAuthStore();
   const [isLoading, setIsLoading] = useState(false);
   const { showToast } = useToastStore();
@@ -35,7 +35,7 @@ export default function SignoutButton() {
       modalTitle="Potvrzení odhlášení"
       modalDescription="Opravdu se chcete odhlásit?"
       onConfirm={handleSignout}
-      className="grow-0 shape-button-rectangular color-button "
+      className={`grow-0 shape-button-rectangular color-button ${className}`}
     />
   );
 }
