@@ -78,7 +78,6 @@ CREATE TABLE IF NOT EXISTS exercises (
     position INT NOT NULL,
     chapter_id INT NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    finished_at TIMESTAMP,
     FOREIGN KEY (chapter_id) REFERENCES chapters(id)
 );
 
@@ -86,8 +85,9 @@ CREATE TABLE IF NOT EXISTS exercises (
 CREATE TABLE IF NOT EXISTS user_exercises ( 
     user_id UUID,
     exercise_id INT ,
+    points_achieved INT NOT NULL DEFAULT 0,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    score INT NOT NULL DEFAULT 0,
+    finished_at TIMESTAMP,    
     PRIMARY KEY (user_id, exercise_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (exercise_id) REFERENCES exercises(id)
