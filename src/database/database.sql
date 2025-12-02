@@ -1,9 +1,11 @@
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE users
+ADD CONSTRAINT fk_users_auth
+FOREIGN KEY (id) REFERENCES auth.users(id);
 
 -- Subjects like Math, Physics, etc.
 CREATE TABLE IF NOT EXISTS subjects (
@@ -23,11 +25,11 @@ CREATE TABLE IF NOT EXISTS school_levels (
 -- Classes like Grade 1, Grade 2, etc.
 CREATE TABLE IF NOT EXISTS classes (
     id SERIAL PRIMARY KEY,
-    school_levels_id INT,
+    school_level_id INT,
     name VARCHAR(100) NOT NULL,
     position INT NOT NULL, 
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    FOREIGN KEY (school_levels_id) REFERENCES school_levels(id)
+    FOREIGN KEY (school_level_id) REFERENCES school_levels(id)
 );
 
 -- Courses like Algebra, Geometry, etc.
@@ -35,8 +37,8 @@ CREATE TABLE IF NOT EXISTS courses (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     position INT NOT NULL, 
-    class_id INT,
-    subject_id INT,
+    class_id INT NOT NULL,
+    subject_id INT NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (class_id) REFERENCES classes(id),
     FOREIGN KEY (subject_id) REFERENCES subjects(id)
@@ -47,9 +49,23 @@ CREATE TABLE IF NOT EXISTS chapters (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     position INT NOT NULL,
-    course_id INT,
+    course_id INT NOT NULL,
+    explanation_id INT,
+    points_required INTEGER[],
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
-    FOREIGN KEY (course_id) REFERENCES courses(id)
+    FOREIGN KEY (course_id) REFERENCES courses(id),
+    FOREIGN KEY (explanation_id) REFERENCES explanations(id)
+);
+
+-- User progress in chapters
+CREATE TABLE user_chapters (
+    user_id UUID,
+    chapter_id INT,
+    points_achieved INT[],
+    next_at TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    finished_at TIMESTAMP,
+    PRIMARY KEY (user_id, chapter_id)
 );
 
 -- Exercises within chapters
@@ -60,17 +76,18 @@ CREATE TABLE IF NOT EXISTS exercises (
     points INT NOT NULL DEFAULT 0,
     content JSONB NOT NULL,
     position INT NOT NULL,
-    chapter_id INT,
+    chapter_id INT NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    finished_at TIMESTAMP,
     FOREIGN KEY (chapter_id) REFERENCES chapters(id)
 );
 
 -- User score on exercises
 CREATE TABLE IF NOT EXISTS user_exercises ( 
     user_id UUID,
-    exercise_id INT,
+    exercise_id INT ,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    score INT,
+    score INT NOT NULL DEFAULT 0,
     PRIMARY KEY (user_id, exercise_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (exercise_id) REFERENCES exercises(id)
@@ -84,13 +101,4 @@ CREATE TABLE IF NOT EXISTS explanations (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Linking chapters to explanations
-CREATE TABLE IF NOT EXISTS chapter_explanations (
-    chapter_id INT,
-    explanation_id INT,
-    position INT NOT NULL,
-    PRIMARY KEY (chapter_id, explanation_id),
-    FOREIGN KEY (chapter_id) REFERENCES chapters(id),
-    FOREIGN KEY (explanation_id) REFERENCES explanations(id)
-);
 

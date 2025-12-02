@@ -2,6 +2,6 @@
   "id": 1,
   "title": "Rovnice",
   "content": {
-    "html": "<p>Cílem je získat správnou hodnotu neznámé.</p><p>Víme, že obě strany rovnice jsou si na začátku rovny. Po celou dobu řešení musí být rovnost zachována. Dosáhneme toho tak, že budeme postupně používat stejné úpravy na obou stranách rovnice.</p>"
+    "html": "<p>Obě strany rovnice musí být vždy stejné, proto provádíme stejné úpravy na obou stranách.</p>"
   }
 }

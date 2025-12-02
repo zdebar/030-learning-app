@@ -23,8 +23,6 @@ export type ExplanationContent = {
 };
 
 export type Explanation = {
-  id: number;
-  title: string;
   content: ExplanationContent;
   examples?: string[];
 };
