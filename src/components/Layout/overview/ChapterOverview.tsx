@@ -1,5 +1,7 @@
 import type { ChapterOverviewType } from "@/components/Layout/overview/overview.datatypes";
 import Button from "@/components/UI/buttons/Button";
+import ProgressBars from "./ProgressBars";
+import config from "@/config/config";
 
 export default function ChapterOverview({
   name,
@@ -16,33 +18,25 @@ export default function ChapterOverview({
   const isDisabled = finishedAt !== null || !isTimeToPractice;
 
   // Calculate progress for each phase
-  const progressPhases = pointsRequired?.map((required, idx) => {
-    const achieved = pointsAchieved?.[idx] ?? 0;
-    const percent = Math.min(100, Math.round((achieved / required) * 100));
-    return (
-      <div key={idx} className="mr-2">
-        {percent}%
-      </div>
-    );
-  });
+  const progressPhases = pointsRequired
+    ?.map((required, idx) => {
+      const achieved = pointsAchieved?.[idx] ?? 0;
+      const percent = Math.min(1, Math.round((achieved / required) * 1));
+      return percent;
+    })
+    .splice(0, config.srs.intervals.length);
 
   return (
     <div className="flex justify-between h-button border mb-1">
-      <div className="flex items-center justify-between pl-16 grow">
+      <div className="flex items-center justify-between pl-4 grow">
         <h1>{name}</h1>
-        <div className="flex">
-          {progressPhases?.map((phase, index) => (
-            <div key={index} className="flex items-center mr-4">
-              {phase}
-            </div>
-          ))}
-        </div>
+        <ProgressBars values={progressPhases} />
       </div>
 
       {/* Additional chapter details can be added here */}
       <Button
         disabled={isDisabled}
-        className="w-40 grow-0 border-none"
+        className="w-20 grow-0 border-none "
         onClick={handlePracticeClick}
       >
         Další

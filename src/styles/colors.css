@@ -10,6 +10,10 @@
   --color-button-normal: green;
   --color-button-hover: white;
 
+  /** Bar Colors **/
+  --color-bar-full: lightblue;
+  --color-bar-empty: inherit;
+
   /** Overlay Color **/
   --color-overlay: rgba(0, 0, 0, 0.2);
 }
