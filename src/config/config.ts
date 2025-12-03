@@ -1,6 +1,6 @@
 const config = {
   srs: {
-    intervals: [0, 1, 2, 4, 8, 16], // days of repepetition intervals
+    intervals: [0, 1, 2, 4, 8, 16, 32, 64, 128, 256], // days of repepetition intervals
   },
 };
 

@@ -27,7 +27,7 @@ export default function ChapterOverview({
   });
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between h-button border mb-1">
       <div className="flex items-center justify-between pl-16 grow">
         <h1>{name}</h1>
         <div className="flex">
@@ -42,7 +42,7 @@ export default function ChapterOverview({
       {/* Additional chapter details can be added here */}
       <Button
         disabled={isDisabled}
-        className="w-40 grow-0"
+        className="w-40 grow-0 border-none"
         onClick={handlePracticeClick}
       >
         Další
