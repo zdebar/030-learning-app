@@ -1,7 +1,5 @@
 {
   "id": 1,
   "title": "Rovnice",
-  "content": {
-    "html": "<p>Obě strany rovnice musí být vždy stejné, proto provádíme stejné úpravy na obou stranách.</p>"
-  }
+  "html": "<p>Obě strany rovnice musí být vždy stejné, proto provádíme stejné úpravy na obou stranách.</p>"
 }

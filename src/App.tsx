@@ -35,7 +35,7 @@ function App() {
           </Route>
           <Route element={<ProtectedLayout />}>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/practice" element={<Practice />} />
+            <Route path="/practice/:id" element={<Practice />} />
           </Route>
           <Route
             path="/*"

@@ -1,8 +1,6 @@
 {
   "id": 2,
   "title": "Přičítání",
-  "content": {
-    "html": "<p>Přičteme stejné číslo k oběma straná rovnice.</p>"
-  },
+  "html": "<p>Přičteme stejné číslo k oběma straná rovnice.</p>",
   "examples": ["x = 7", "x + 3 = 7 + 3"]
 }

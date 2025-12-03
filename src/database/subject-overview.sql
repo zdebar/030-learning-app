@@ -31,7 +31,7 @@ courses_data AS (
       ) ORDER BY ch.position ASC
     ) AS chapters
   FROM courses co
-  LEFT JOIN chapters_data ch ON ch.course_id = co.id
+  INNER JOIN chapters_data ch ON ch.course_id = co.id
   WHERE co.subject_id = subject_id
   GROUP BY co.id
 ),
@@ -47,9 +47,9 @@ classes_data AS (
         'name', co.name,
         'chapters', co.chapters
       ) ORDER BY co.position ASC
-    ) FILTER (WHERE co.id IS NOT NULL) AS courses
+    ) AS courses
   FROM classes cl
-  LEFT JOIN courses_data co ON co.class_id = cl.id
+  INNER JOIN courses_data co ON co.class_id = cl.id
   GROUP BY cl.id
 ),
 school_levels_data AS (
@@ -63,9 +63,9 @@ school_levels_data AS (
         'name', cl.name,
         'courses', cl.courses
       ) ORDER BY cl.position ASC
-    ) AS classes
+    ) FILTER (WHERE cl.id IS NOT NULL) AS classes
   FROM school_levels sl
-  LEFT JOIN classes_data cl ON cl.school_level_id = sl.id
+  INNER JOIN classes_data cl ON cl.school_level_id = sl.id
   GROUP BY sl.id
 )
 SELECT json_agg(
@@ -74,6 +74,6 @@ SELECT json_agg(
     'name', sl.name,
     'classes', sl.classes
   ) ORDER BY sl.position ASC
-)
+) 
 FROM school_levels_data sl;
 $$ LANGUAGE SQL STABLE;

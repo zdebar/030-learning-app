@@ -16,13 +16,13 @@ export type ExerciseContent = {
 };
 
 // Explanation data types
-export type ExplanationContent = {
+export type ExplanationText = {
   html?: string;
   markdown?: string;
   text?: string;
 };
 
 export type Explanation = {
-  content: ExplanationContent;
+  text: ExplanationText;
   examples?: string[];
 };

@@ -1,8 +1,6 @@
 {
   "id": 3,
   "title": "Odečítání",
-  "content": {
-    "html": "<p>Odečteme stejné číslo od obou stran rovnice.</p>"
-  },
+  "html": "<p>Odečteme stejné číslo od obou stran rovnice.</p>",
   "examples": ["x = 7", "x - 3 = 7 - 3"]
 }
