@@ -9,6 +9,7 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Math from "./pages/Math";
 import Profile from "@/pages/Profile";
+import Practice from "@/pages/Practice";
 import "./App.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           </Route>
           <Route element={<ProtectedLayout />}>
             <Route path="/profile" element={<Profile />} />
+            <Route path="/practice" element={<Practice />} />
           </Route>
           <Route
             path="/*"

@@ -19,12 +19,13 @@ export default function ChapterOverview({
 
   // Calculate progress for each phase
   const progressPhases = pointsRequired
-    ?.map((required, idx) => {
+    ?.slice(0, config.srs.intervals.length)
+    .map((required, idx) => {
       const achieved = pointsAchieved?.[idx] ?? 0;
       const percent = Math.min(1, Math.round((achieved / required) * 1));
       return percent;
-    })
-    .splice(0, config.srs.intervals.length);
+    });
+  console.log(progressPhases);
 
   return (
     <div className="flex justify-between h-button border mb-1">
