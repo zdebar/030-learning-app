@@ -7,7 +7,7 @@ import Expandable from "./Expandable";
 
 export default function CourseOverview({ name, chapters }: CourseOverviewType) {
   return (
-    <Expandable name={name} buttonContent={null} className="pl-12">
+    <Expandable name={name} buttonContent={null} className="pl-4">
       {chapters &&
         chapters.map((chapter: ChapterOverviewType) => (
           <ChapterOverview key={chapter.id} {...chapter} />
