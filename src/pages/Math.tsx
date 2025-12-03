@@ -1,5 +1,5 @@
 import { supabaseInstance } from "@/config/supabase.config";
-import { useFetch } from "../hooks/use-fetch";
+import { useFetchStorage } from "@/hooks/use-fetch-storage";
 import { useAuthStore } from "@/features/auth/auth-store";
 import { type SchoolLevelOverviewType } from "@/components/Layout/overview/overview.datatypes";
 import SchoolLevelOverview from "@/components/Layout/overview/SchoolLevelOverview";
@@ -11,14 +11,17 @@ export default function Math() {
     data: overview,
     error,
     loading,
-  } = useFetch(async () => {
-    const { data, error } = await supabaseInstance.rpc("subject_overview", {
-      user_id: userId,
-      subject_id: 1,
-    });
-    if (error) throw error;
-    return data;
-  });
+  } = useFetchStorage<SchoolLevelOverviewType[]>(
+    `subject_overview_${userId}_1`,
+    async () => {
+      const { data, error } = await supabaseInstance.rpc("subject_overview", {
+        user_id: userId,
+        subject_id: 1,
+      });
+      if (error) throw error;
+      return data;
+    }
+  );
 
   if (error) return <div>Error: {error}</div>;
   if (loading || !overview) return <div>Loading...</div>;
