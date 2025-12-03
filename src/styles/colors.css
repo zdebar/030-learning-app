@@ -30,6 +30,10 @@
     @apply cursor-default; /* Disabled States */
   }
 
+  .color-disabled {
+    @apply cursor-default opacity-50; /** Disabled States **/
+  }
+
   .color-button-header {
     @apply hover:bg-white hover:text-light; /* Button Interactions */
   }

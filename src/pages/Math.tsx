@@ -24,7 +24,7 @@ export default function Math() {
   if (loading || !overview) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div>
       {overview.map((level: SchoolLevelOverviewType) => (
         <SchoolLevelOverview key={level.id} {...level} />
       ))}

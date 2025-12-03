@@ -28,7 +28,7 @@ export default function ChapterOverview({
 
   return (
     <div className="flex justify-between">
-      <div className="flex items-center justify-between pl-16 color-title-bar grow">
+      <div className="flex items-center justify-between pl-16 grow">
         <h1>{name}</h1>
         <div className="flex">
           {progressPhases?.map((phase, index) => (

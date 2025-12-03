@@ -3,24 +3,15 @@ import type {
   ChapterOverviewType,
 } from "@/components/Layout/overview/overview.datatypes";
 import ChapterOverview from "./ChapterOverview";
-import { useState } from "react";
+import Expandable from "./Expandable";
 
 export default function CourseOverview({ name, chapters }: CourseOverviewType) {
-  const [expanded, setExpanded] = useState(false);
-
   return (
-    <div>
-      <button
-        className="h-button flex items-center pl-12"
-        onClick={() => setExpanded(!expanded)}
-      >
-        <h1>{name}</h1>
-      </button>
-      {expanded &&
-        chapters &&
+    <Expandable name={name} buttonContent={null} className="pl-12">
+      {chapters &&
         chapters.map((chapter: ChapterOverviewType) => (
           <ChapterOverview key={chapter.id} {...chapter} />
         ))}
-    </div>
+    </Expandable>
   );
 }
