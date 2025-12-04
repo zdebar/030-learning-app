@@ -1,25 +1,22 @@
 CREATE TABLE IF NOT EXISTS users (
-    id UUID PRIMARY KEY,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id UUID PRIMARY KEY,    
+    created_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    deleted_at TIMESTAMPTZ,
+    updated_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    FOREIGN KEY (id) REFERENCES auth.users(id)
 );
-
-ALTER TABLE users
-ADD CONSTRAINT fk_users_auth
-FOREIGN KEY (id) REFERENCES auth.users(id);
 
 -- Subjects like Math, Physics, etc.
 CREATE TABLE IF NOT EXISTS subjects (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- School levels like Elementary, Middle School, High School
 CREATE TABLE IF NOT EXISTS school_levels (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    position INT NOT NULL, 
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    position INT NOT NULL
 );
 
 -- Classes like Grade 1, Grade 2, etc.
@@ -28,7 +25,6 @@ CREATE TABLE IF NOT EXISTS classes (
     school_level_id INT,
     name VARCHAR(100) NOT NULL,
     position INT NOT NULL, 
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     FOREIGN KEY (school_level_id) REFERENCES school_levels(id)
 );
 
@@ -39,7 +35,6 @@ CREATE TABLE IF NOT EXISTS courses (
     position INT NOT NULL, 
     class_id INT NOT NULL,
     subject_id INT NOT NULL,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (class_id) REFERENCES classes(id),
     FOREIGN KEY (subject_id) REFERENCES subjects(id)
 );
@@ -51,8 +46,7 @@ CREATE TABLE IF NOT EXISTS chapters (
     position INT NOT NULL,
     course_id INT NOT NULL,
     explanation_id INT,
-    points_required INTEGER[],
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+    points_required INTEGER NOT NULL DEFAULT 0,   
     FOREIGN KEY (course_id) REFERENCES courses(id),
     FOREIGN KEY (explanation_id) REFERENCES explanations(id)
 );
@@ -62,9 +56,10 @@ CREATE TABLE user_chapters (
     user_id UUID,
     chapter_id INT,
     points_achieved INT[],
+    created_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
     next_at TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    finished_at TIMESTAMP,
+    updated_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    finished_at TIMESTAMPTZ,
     PRIMARY KEY (user_id, chapter_id)
 );
 
@@ -77,7 +72,6 @@ CREATE TABLE IF NOT EXISTS exercises (
     content JSONB NOT NULL,
     position INT NOT NULL,
     chapter_id INT NOT NULL,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (chapter_id) REFERENCES chapters(id)
 );
 
@@ -86,8 +80,9 @@ CREATE TABLE IF NOT EXISTS user_exercises (
     user_id UUID,
     exercise_id INT ,
     points_achieved INT NOT NULL DEFAULT 0,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    finished_at TIMESTAMP,    
+    created_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    updated_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    finished_at TIMESTAMPTZ,    
     PRIMARY KEY (user_id, exercise_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (exercise_id) REFERENCES exercises(id)
@@ -97,8 +92,31 @@ CREATE TABLE IF NOT EXISTS user_exercises (
 CREATE TABLE IF NOT EXISTS explanations (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    content JSONB NOT NULL,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    content JSONB NOT NULL
 );
+
+-- Update triggers
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = (now() at time zone 'utc');
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER users_set_updated_at
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER users_set_updated_at
+BEFORE UPDATE ON user_chapters
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER users_set_updated_at
+BEFORE UPDATE ON user_exercises
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
 
 

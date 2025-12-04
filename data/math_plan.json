@@ -1,0 +1,26 @@
+[
+  {
+    "class": "1.ročník",
+    "math": ["počítání do 100", "sčítání do 100", "odčítání do 100"]
+  },
+  {
+    "class": "2.ročník",
+    "math": [
+      "čísla do 100",
+      "porovnání do 100",
+      "sčítání do 100",
+      "odčítání do 100",
+      "násobení číslem 0 až 9",
+      "dělení číslem 0 až 9"
+    ]
+  },
+  {
+    "class": "3.ročník",
+    "math": [
+      "čísla do 1000",
+      "sčítání a odčítání do 1000",
+      "násobení a dělení čísly 0 až 9",
+      "jednoduché slovní úlohy"
+    ]
+  }
+]
