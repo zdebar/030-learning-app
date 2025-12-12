@@ -12,13 +12,14 @@ export default function Math() {
     error,
     loading,
   } = useFetchStorage<SchoolLevelOverviewType[]>(
-    `subject_overview_${userId}_1`,
+    `get_subject_overview_${userId}_1`,
     async () => {
       const { data, error } = await supabaseInstance.rpc("subject_overview", {
         user_id: userId,
         subject_id: 1,
       });
       if (error) throw error;
+      console.log(data, error);
       return data;
     }
   );

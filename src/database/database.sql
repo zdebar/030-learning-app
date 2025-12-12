@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY,    
     created_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
-    deleted_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    deleted_at TIMESTAMPTZ,    
     FOREIGN KEY (id) REFERENCES auth.users(id)
 );
 
@@ -52,13 +52,13 @@ CREATE TABLE IF NOT EXISTS chapters (
 );
 
 -- User progress in chapters
-CREATE TABLE user_chapters (
+CREATE TABLE IF NOT EXISTS user_chapters (
     user_id UUID,
     chapter_id INT,
     points_achieved INT[],
     created_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
-    next_at TIMESTAMP,
     updated_at TIMESTAMPTZ DEFAULT (now() at time zone 'utc'),
+    next_at TIMESTAMPTZ,
     finished_at TIMESTAMPTZ,
     PRIMARY KEY (user_id, chapter_id)
 );

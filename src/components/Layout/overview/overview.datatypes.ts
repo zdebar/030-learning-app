@@ -19,8 +19,8 @@ export type CourseOverviewType = {
 export type ChapterOverviewType = {
   id: number;
   name: string;
-  pointsAchieved: number[];
-  pointsRequired: number[];
+  pointsAchieved: number[] | null;
+  pointsRequired: number;
   nextAt: string | null;
   finishedAt: string | null;
 };

@@ -18,13 +18,11 @@ export default function ChapterOverview({
   const isDisabled = finishedAt !== null || !isTimeToPractice;
 
   // Calculate progress for each phase
-  const progressPhases = pointsRequired
-    ?.slice(0, config.srs.intervals.length)
-    .map((required, idx) => {
-      const achieved = pointsAchieved?.[idx] ?? 0;
-      const percent = Math.min(1, Math.round((achieved / required) * 1));
-      return percent;
-    });
+  const progressPhases = config.srs.intervals.map((idx) => {
+    const achieved = pointsAchieved?.[idx] ?? 0;
+    const progress = Math.min(1, Math.round((achieved / pointsRequired) * 1));
+    return progress;
+  });
 
   return (
     <div className="flex justify-between h-button border mb-1">
