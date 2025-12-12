@@ -1,7 +1,8 @@
 {
-  "question": "Najdi x",
   "type": "introduction",
+  "question": "Najdi x",
   "asignment": "5 = x",
+  "points": 0,
   "solutions": [
     [
       {

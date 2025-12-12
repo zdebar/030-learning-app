@@ -1,0 +1,24 @@
+{
+  "type": "introduction",
+  "question": "Najdi x",
+  "asignment": "x + 8 = 7x + 32",
+  "points": 2,
+  "solutions": [
+    [
+      {
+        "operation": "- x, - 32",
+        "steps-hidden": ["x - x + 8 - 32 = 7x - x + 32 - 32"],
+        "steps": ["-24 = 6x"],
+        "points": -1
+      },
+      {
+        "operation": ": 6",
+        "steps-hidden": ["-24 / 6 = 6x / 6", "-4 = x"],
+        "steps": ["x = -4"],
+        "points": -1
+      }
+    ]
+  ],
+  "options": ["x = -4", "x = -3", "x = 2", "x = 4", "x = 6", "x = 8"],
+  "correct-option": 0
+}

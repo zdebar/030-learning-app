@@ -1,0 +1,22 @@
+{
+  "type": "practice",
+  "question": " Najdi x",
+  "asignment": "10x - 1 = 15 - 6x",
+  "points": 2,
+  "solutions": [
+    [
+      {
+        "operation": "+ 1, + 6x",
+        "steps-hidden": ["10x + 6x - 1 + 1 = 15 + 1 - 6x + 6x"],
+        "steps": ["16x = 16"],
+        "points": -1
+      },
+      {
+        "operation": ": 6",
+        "steps-hidden": ["16x / 16 = 16 / 16"],
+        "steps": ["x = 1"],
+        "points": -1
+      }
+    ]
+  ]
+}
