@@ -1,4 +1,4 @@
-import LightBulbIcon from "@/components/UI/icons/LightBulbIcon";
+import LightBulbIcon from "./LightBulbIcon";
 import { useOverlayStore } from "./overlay-store";
 
 export default function HelpButton({

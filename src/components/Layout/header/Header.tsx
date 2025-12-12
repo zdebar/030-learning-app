@@ -9,7 +9,7 @@ export default function Header() {
   const { userId } = useAuthStore();
 
   return (
-    <header className="flex justify-between">
+    <header className="flex justify-between p-4">
       <nav
         role="navigation"
         aria-label="Hlavní navigace"
