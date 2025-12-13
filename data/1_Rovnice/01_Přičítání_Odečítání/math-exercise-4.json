@@ -1,0 +1,21 @@
+{
+  "type": "practice",
+  "question": "Najdi x",
+  "asignment": "2(x - 1) - 3(x - 2) + 4(x - 3) = 2(x + 5)",
+  "points": 2,
+  "solutions": [
+    [
+      {
+        "operation": "roznásobení závorek",
+        "steps": ["2x - 2 - 3x + 6 + 4x - 12 = 2x + 10", "3x - 8 = 2x + 10"],
+        "points": -1
+      },
+      {
+        "operation": " - 2x, + 8",
+        "steps-hidden": ["3x - 2x - 8  + 8 = 2x - 2x + 10 + 8"],
+        "steps": ["x = 18"],
+        "points": -1
+      }
+    ]
+  ]
+}

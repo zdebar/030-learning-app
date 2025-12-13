@@ -19,7 +19,6 @@ export default function Math() {
         subject_id: 1,
       });
       if (error) throw error;
-      console.log(data, error);
       return data;
     }
   );

@@ -35,7 +35,7 @@ export default function Expandable({
         disabled={!children}
       >
         <h1>{name}</h1>
-        <div>
+        <div className="flex gap-4">
           {buttonContent}
           {expanded ? <ChevronDownIcon /> : <ChevronRightIcon />}
         </div>

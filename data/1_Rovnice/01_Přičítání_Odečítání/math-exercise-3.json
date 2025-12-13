@@ -1,0 +1,22 @@
+{
+  "type": "practice",
+  "question": " Najdi x",
+  "asignment": "9x - 8 = 11x - 10",
+  "points": 2,
+  "solutions": [
+    [
+      {
+        "operation": "+ 10, - 9x",
+        "steps-hidden": ["9x - 8 + 10 - 9x = 11x - 10 + 10 - 9x", "2x = 2"],
+        "steps": ["2x = 2"],
+        "points": -1
+      },
+      {
+        "operation": ": 2",
+        "steps-hidden": ["2x / 2 = 2 / 2"],
+        "steps": ["x = 1"],
+        "points": -1
+      }
+    ]
+  ]
+}
