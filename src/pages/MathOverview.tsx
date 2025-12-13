@@ -3,7 +3,7 @@ import { useFetchStorage } from "@/hooks/use-fetch-storage";
 import { useAuthStore } from "@/features/auth/auth-store";
 import { type SchoolLevelOverviewType } from "@/components/Layout/overview/overview.datatypes";
 import SchoolLevelOverview from "@/components/Layout/overview/SchoolLevelOverview";
-export default function Math() {
+export default function MathOverview() {
   const { userId } = useAuthStore();
 
   // Fetch subject overview data
@@ -12,12 +12,15 @@ export default function Math() {
     error,
     loading,
   } = useFetchStorage<SchoolLevelOverviewType[]>(
-    `get_subject_overview_${userId}_1`,
+    `math_overview_${userId}_1`,
     async () => {
-      const { data, error } = await supabaseInstance.rpc("subject_overview", {
-        user_id: userId,
-        subject_id: 1,
-      });
+      const { data, error } = await supabaseInstance.rpc(
+        "get_subject_overview",
+        {
+          user_id: userId,
+          subject_id: 1,
+        }
+      );
       if (error) throw error;
       return data;
     }

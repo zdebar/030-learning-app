@@ -18,7 +18,7 @@ export default function Header() {
         <HeaderButton to="/" aria-label="Domů">
           <HomeIcon />
         </HeaderButton>
-        <HeaderButton to="/math" aria-label="Uživatelský dashboard">
+        <HeaderButton to="/math-overview" aria-label="Uživatelský dashboard">
           <MathIcon />
         </HeaderButton>
       </nav>

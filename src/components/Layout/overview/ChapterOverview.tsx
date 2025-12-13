@@ -35,7 +35,7 @@ export default function ChapterOverview({
       <Button
         disabled={isDisabled}
         className="w-20 grow-0 border-none"
-        onClick={() => navigate(`/practice/${encodeURIComponent(id)}`)}
+        onClick={() => navigate(`/math-practice/${encodeURIComponent(id)}`)}
       >
         Další
       </Button>

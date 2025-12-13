@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION public.get_practice(user_id UUID, practice_chapter_id INT)
+CREATE OR REPLACE FUNCTION public.get_math_practice(user_id UUID, practice_chapter_id INT)
 RETURNS JSON AS $$
 SELECT json_build_object(
   'exercise', (
@@ -15,15 +15,15 @@ SELECT json_build_object(
     LEFT JOIN user_exercises ue
       ON ue.exercise_id = e.id AND ue.user_id = user_id
     WHERE e.chapter_id = practice_chapter_id
-    ORDER BY COALESCE(ue.finished_at, 'infinity') ASC, COALESCE(ue.points_achieved, -1) ASC, e.position ASC
+      AND ue.finished_at IS NULL
+    ORDER BY e.position ASC
     LIMIT 1
   ),
   'explanation', (
     SELECT json_build_object(
       'explanation_id', ex.id,
       'name', ex.name,
-      'content', ex.content,
-      'updated_at', ex.updated_at
+      'content', ex.content
     )
     FROM chapters ch
     JOIN explanations ex ON ex.id = ch.explanation_id

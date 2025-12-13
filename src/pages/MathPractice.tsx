@@ -5,15 +5,15 @@ import { useParams } from "react-router-dom";
 import Explanation from "@/features/practice/Explanation";
 import { findSessionIndex } from "@/features/practice/practice.utils";
 
-export default function Practice() {
+export default function MathPractice() {
   const { userId } = useAuthStore();
   const { id } = useParams();
 
   // Fetch exercise data
   const { data, error, loading } = useFetchStorage(
-    `chapter_practice_${id}_1`,
+    `math_practice_${id}_1`,
     async () => {
-      const { data, error } = await supabaseInstance.rpc("get_practice", {
+      const { data, error } = await supabaseInstance.rpc("get_math_practice", {
         user_id: userId,
         practice_chapter_id: Number(id),
       });

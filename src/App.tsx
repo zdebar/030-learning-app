@@ -7,9 +7,9 @@ import { useEffect } from "react";
 import { useAuthStore } from "@/features/auth/auth-store";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
-import Math from "./pages/Math";
+import MathOverview from "./pages/MathOverview";
 import Profile from "@/pages/Profile";
-import Practice from "@/pages/Practice";
+import MathPractice from "@/pages/MathPractice";
 import "./App.css";
 
 function App() {
@@ -29,13 +29,13 @@ function App() {
       <div className="max-w-container grow mx-auto w-full">
         <Routes>
           <Route path="/*" element={<Home />} />
-          <Route path="/math" element={<Math />} />
+          <Route path="/math-overview" element={<MathOverview />} />
           <Route element={<PublicLayout />}>
             <Route path="/login" element={<Login />} />
           </Route>
           <Route element={<ProtectedLayout />}>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/practice/:id" element={<Practice />} />
+            <Route path="/math-practice/:id" element={<MathPractice />} />
           </Route>
           <Route
             path="/*"
